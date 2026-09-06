@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, #152238 0%, #07090e 100%);
+  background-color: #07090e;
+  min-height: 100vh;
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2a3e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3d59;
+}
+
+/* Uber / Careem High-End Glassmorphism */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(21, 29, 44, 0.75) 0%, rgba(13, 18, 28, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 36px -10px rgba(0, 229, 139, 0.12);
+  transform: translateY(-2px);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+}
+
+/* Subtly animated gradient border */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  top: -1px; bottom: -1px;
+  left: -1px; right: -1px;
+  background: linear-gradient(to bottom right, rgba(16, 185, 129, 0.4), rgba(255, 255, 255, 0.05), rgba(168, 85, 247, 0.2));
+  border-radius: inherit;
+  z-index: -1;
+}
