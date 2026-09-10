@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { VehicleProfileItem, fetchVehicleSummary } from "@/lib/api-client";
 import { VehicleCategory } from "@/lib/types";
+import VerificationThread from "./VerificationThread";
 
 interface FleetOverviewProps {
   vehicles: VehicleProfileItem[];
@@ -346,6 +347,11 @@ export default function FleetOverview({
                     <div className="text-2xl font-black text-white tracking-tight">
                       PKR {stats.net_income.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </div>
+                  </div>
+
+                  <div className="border-y border-white/5 py-3 mb-3">
+                    <div className="text-[10px] uppercase tracking-wider text-slate-400 mb-2">Verification Thread</div>
+                    <VerificationThread />
                   </div>
 
                   {/* Sub-metrics */}

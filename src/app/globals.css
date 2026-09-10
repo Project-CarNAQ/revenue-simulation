@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --ledger-navy: #0E1F35;
+  --signal-blue: #1B5FA6;
+  --sky-tint: #EAF2FB;
+  --paper: #F7F8FA;
+  --verified-green: #1E7F55;
+  --pending-amber: #B8791A;
+  --flag-red: #B23B2E;
+  --font-display: 'Archivo', sans-serif;
+  --font-sans: 'Public Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 body {
   font-family: var(--font-sans);
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, #152238 0%, #07090e 100%);
-  background-color: #07090e;
+  background-color: var(--paper);
+  color: var(--ledger-navy);
   min-height: 100vh;
 }
 
@@ -21,56 +29,137 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #07090e;
+  background: var(--paper);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f2a3e;
+  background: #b8c5d4;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d3d59;
+  background: var(--signal-blue);
 }
 
-/* Uber / Careem High-End Glassmorphism */
+/* Shared institutional surfaces. Kept as the existing hook so screen components stay small. */
 .glass-panel {
-  background: linear-gradient(135deg, rgba(21, 29, 44, 0.75) 0%, rgba(13, 18, 28, 0.85) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(14, 31, 53, 0.12);
+  border-radius: 8px !important;
 }
 
 .glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 
 .glass-panel-hover:hover {
-  border-color: rgba(16, 185, 129, 0.35);
-  box-shadow: 0 12px 36px -10px rgba(0, 229, 139, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(27, 95, 166, 0.5);
+  background: var(--sky-tint);
 }
 
-.glow-emerald {
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+.bg-dark-950 {
+  background-color: var(--paper) !important;
 }
 
-.glow-purple {
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+.bg-dark-900, .bg-dark-850, .bg-dark-800, .bg-dark-750 {
+  background-color: #ffffff !important;
 }
 
-/* Subtly animated gradient border */
-.gradient-border {
+.text-white, .text-slate-100, .text-slate-200, .text-slate-300 {
+  color: var(--ledger-navy) !important;
+}
+
+.text-slate-400, .text-slate-500 {
+  color: #5d6b7d !important;
+}
+
+.bg-brand-500 {
+  background-color: var(--signal-blue) !important;
+}
+
+.bg-sky-tint { background-color: var(--sky-tint) !important; }
+.text-signal-blue { color: var(--signal-blue) !important; }
+
+.text-purple-300, .text-purple-400, .text-purple-500 {
+  color: var(--signal-blue) !important;
+}
+
+.border-purple-500\/20, .border-purple-500\/30, .border-purple-500\/40 {
+  border-color: rgba(27, 95, 166, 0.24) !important;
+}
+
+.bg-purple-500\/10, .bg-purple-500\/15 {
+  background-color: rgba(27, 95, 166, 0.1) !important;
+}
+
+.bg-gradient-to-t, .bg-gradient-to-br {
+  background-image: none !important;
+}
+
+.text-brand-300, .text-brand-400, .text-brand-500 {
+  color: var(--signal-blue) !important;
+}
+
+.border-white\/5, .border-white\/10, .border-white\/15 {
+  border-color: rgba(14, 31, 53, 0.12) !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+button, input, select {
+  border-radius: 4px !important;
+}
+
+.verification-thread {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.verification-step {
   position: relative;
-  background-clip: padding-box;
+  padding-right: 8px;
+  font-size: 10px;
+  line-height: 1.25;
+  color: #6b7787;
 }
 
-.gradient-border::after {
+.verification-step:not(:last-child)::after {
   content: '';
   position: absolute;
-  top: -1px; bottom: -1px;
-  left: -1px; right: -1px;
-  background: linear-gradient(to bottom right, rgba(16, 185, 129, 0.4), rgba(255, 255, 255, 0.05), rgba(168, 85, 247, 0.2));
-  border-radius: inherit;
-  z-index: -1;
+  top: 5px;
+  left: 12px;
+  right: 8px;
+  height: 1px;
+  background: #c7d0db;
+  z-index: 0;
+}
+
+.verification-step.is-complete { color: var(--verified-green); }
+.verification-dot {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 6px;
+  border: 1px solid #aeb9c6;
+  border-radius: 999px;
+  background: var(--paper);
+}
+
+.is-complete .verification-dot {
+  border-color: var(--verified-green);
+  background: var(--verified-green);
 }

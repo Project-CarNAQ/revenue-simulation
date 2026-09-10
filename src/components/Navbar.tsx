@@ -49,7 +49,7 @@ export default function Navbar({
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Brand & Microservice Badge */}
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center glow-emerald shadow-lg">
+          <div className="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center">
             <Car className="w-6 h-6 text-dark-950 font-bold" />
           </div>
           <div>
@@ -131,6 +131,10 @@ export default function Navbar({
 
         {/* Actions & API Key */}
         <div className="flex items-center space-x-2">
+          <div className="flex items-center border border-white/10 rounded p-0.5 text-[11px] font-mono" aria-label="Language selector">
+            <span className="px-2 py-1 bg-sky-tint text-signal-blue font-bold">EN</span>
+            <span className="px-2 py-1 text-slate-400">اردو</span>
+          </div>
           {vehicleCount === 0 && (
             <button
               onClick={onSeedDemo}

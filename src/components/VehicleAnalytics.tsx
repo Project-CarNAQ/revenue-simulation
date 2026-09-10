@@ -33,6 +33,7 @@ import {
   AnomalyCheckResult,
   DistributionPreviewResult,
 } from "@/lib/types";
+import VerificationThread from "./VerificationThread";
 
 interface VehicleAnalyticsProps {
   vehicles: VehicleProfileItem[];
@@ -179,6 +180,10 @@ export default function VehicleAnalytics({
               Deterministic calculation anchor:{" "}
               <span className="font-mono text-slate-300">{currentVehicle.id}</span>
             </p>
+            <div className="mt-4 max-w-xl">
+              <div className="text-[10px] uppercase tracking-wider text-slate-400 mb-2">Verification Thread</div>
+              <VerificationThread />
+            </div>
           </div>
         </div>
 
