@@ -9,12 +9,13 @@ import {
   Key,
   CheckCircle2,
   Sparkles,
+  BookOpen,
 } from "lucide-react";
 import { getStoredApiKey, setStoredApiKey } from "@/lib/api-client";
 
 interface NavbarProps {
-  activeTab: "fleet" | "analytics" | "config" | "dispatch";
-  setActiveTab: (tab: "fleet" | "analytics" | "config" | "dispatch") => void;
+  activeTab: "fleet" | "analytics" | "config" | "dispatch" | "docs";
+  setActiveTab: (tab: "fleet" | "analytics" | "config" | "dispatch" | "docs") => void;
   onSeedDemo: () => void;
   isSeeding: boolean;
   vehicleCount: number;
@@ -45,30 +46,30 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 glass-panel border-b border-white/10 px-4 lg:px-8 py-3.5">
+    <header className="sticky top-0 z-50 glass-panel border-b border-white/10 px-4 lg:px-8 py-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Brand & Microservice Badge */}
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center">
             <Car className="w-6 h-6 text-dark-950 font-bold" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-extrabold tracking-tight text-white">
+                <span className="text-xl font-extrabold tracking-tight text-white">
                 Car<span className="text-brand-400">NAQ</span>
               </span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">
-                Revenue Engine
+                Revenue engine
               </span>
             </div>
             <p className="text-xs text-slate-400">
-              Deterministic Mobility Simulation & Investor Portal
+              Fairer fleet decisions through deterministic simulation
             </p>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <nav className="flex items-center space-x-1 bg-dark-900/80 p-1.5 rounded-xl border border-white/5">
+        <nav className="flex items-center space-x-1 bg-dark-900/80 p-1.5 rounded-2xl border border-white/5">
           <button
             onClick={() => setActiveTab("fleet")}
             className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
@@ -127,14 +128,24 @@ export default function Navbar({
             <Sliders className="w-4 h-4" />
             <span>Parameters</span>
           </button>
+
+          <button
+            onClick={() => setActiveTab("docs")}
+            className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              activeTab === "docs"
+                ? "bg-brand-500 text-dark-950 shadow-md font-bold"
+                : "text-slate-300 hover:text-white hover:bg-white/5"
+            }`}
+            title="API Documentation"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>API Docs</span>
+          </button>
         </nav>
 
         {/* Actions & API Key */}
         <div className="flex items-center space-x-2">
-          <div className="flex items-center border border-white/10 rounded p-0.5 text-[11px] font-mono" aria-label="Language selector">
-            <span className="px-2 py-1 bg-sky-tint text-signal-blue font-bold">EN</span>
-            <span className="px-2 py-1 text-slate-400">اردو</span>
-          </div>
+          
           {vehicleCount === 0 && (
             <button
               onClick={onSeedDemo}

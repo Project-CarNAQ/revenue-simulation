@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CarNAQ | Revenue Simulation Engine & Fleet Portal",
+  title: "CarNAQ | Revenue Simulation Engine",
   description:
     "Deterministic mobility revenue simulation engine and investor fleet portal for CarNAQ.",
 };
@@ -22,7 +22,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>

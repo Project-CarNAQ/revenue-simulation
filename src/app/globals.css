@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --ledger-navy: #0E1F35;
-  --signal-blue: #1B5FA6;
-  --sky-tint: #EAF2FB;
-  --paper: #F7F8FA;
-  --verified-green: #1E7F55;
-  --pending-amber: #B8791A;
-  --flag-red: #B23B2E;
-  --font-display: 'Archivo', sans-serif;
-  --font-sans: 'Public Sans', sans-serif;
+  --ledger-navy: #141414;
+  --signal-blue: #c1f11d;
+  --sky-tint: #f0f9fa;
+  --paper: #fffef9;
+  --verified-green: #4d7c0f;
+  --pending-amber: #b7791f;
+  --flag-red: #d32f2f;
+  --font-display: 'Suisse Intl', 'Noto Sans', sans-serif;
+  --font-sans: 'Suisse Intl', 'Noto Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 }
 
@@ -20,6 +20,8 @@ body {
   background-color: var(--paper);
   color: var(--ledger-navy);
   min-height: 100vh;
+  background-image: linear-gradient(135deg, rgba(193, 241, 29, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(233, 236, 239, 0.55), transparent 48%);
 }
 
 /* Custom sleek scrollbars */
@@ -43,9 +45,10 @@ body {
 
 /* Shared institutional surfaces. Kept as the existing hook so screen components stay small. */
 .glass-panel {
-  background: #ffffff;
-  border: 1px solid rgba(14, 31, 53, 0.12);
-  border-radius: 8px !important;
+  background: rgba(250, 248, 243, 0.92);
+  border: 1px solid #d0d0d0;
+  border-radius: 16px !important;
+  box-shadow: 0 3px 8px rgba(20, 20, 20, 0.08);
 }
 
 .glass-panel-hover {
@@ -53,8 +56,8 @@ body {
 }
 
 .glass-panel-hover:hover {
-  border-color: rgba(27, 95, 166, 0.5);
-  background: var(--sky-tint);
+  border-color: #c1f11d;
+  background: #f0ede7;
 }
 
 .bg-dark-950 {
@@ -62,7 +65,7 @@ body {
 }
 
 .bg-dark-900, .bg-dark-850, .bg-dark-800, .bg-dark-750 {
-  background-color: #ffffff !important;
+  background-color: #faf8f3 !important;
 }
 
 .text-white, .text-slate-100, .text-slate-200, .text-slate-300 {
@@ -70,11 +73,11 @@ body {
 }
 
 .text-slate-400, .text-slate-500 {
-  color: #5d6b7d !important;
+  color: #6c757d !important;
 }
 
 .bg-brand-500 {
-  background-color: var(--signal-blue) !important;
+  background-color: #c1f11d !important;
 }
 
 .bg-sky-tint { background-color: var(--sky-tint) !important; }
@@ -97,11 +100,11 @@ body {
 }
 
 .text-brand-300, .text-brand-400, .text-brand-500 {
-  color: var(--signal-blue) !important;
+  color: #141414 !important;
 }
 
 .border-white\/5, .border-white\/10, .border-white\/15 {
-  border-color: rgba(14, 31, 53, 0.12) !important;
+  border-color: rgba(20, 20, 20, 0.12) !important;
 }
 
 .font-sans {
@@ -118,7 +121,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button, input, select {
-  border-radius: 4px !important;
+  border-radius: 8px !important;
+}
+
+button {
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out, transform 180ms ease-out;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+input, select {
+  background-color: #f0ede7 !important;
+  border-color: #d0d0d0 !important;
+  color: #141414 !important;
+}
+
+input:focus, select:focus {
+  border-color: #c1f11d !important;
+  box-shadow: 0 0 0 3px rgba(193, 241, 29, 0.16);
 }
 
 .verification-thread {

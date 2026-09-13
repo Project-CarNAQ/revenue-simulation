@@ -6,6 +6,7 @@ import FleetOverview from "@/components/FleetOverview";
 import VehicleAnalytics from "@/components/VehicleAnalytics";
 import ConfigManager from "@/components/ConfigManager";
 import DispatchSimulator from "@/components/DispatchSimulator";
+import ApiDocs from "@/components/ApiDocs";
 import AddVehicleModal from "@/components/AddVehicleModal";
 import {
   fetchVehicles,
@@ -17,7 +18,7 @@ import { VehicleCategory } from "@/lib/types";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<
-    "fleet" | "analytics" | "config" | "dispatch"
+    "fleet" | "analytics" | "config" | "dispatch" | "docs"
   >("fleet");
   const [vehicles, setVehicles] = useState<VehicleProfileItem[]>([]);
   const [selectedVehicleId, setSelectedVehicleId] = useState<string | null>(
@@ -120,6 +121,8 @@ export default function DashboardPage() {
             {activeTab === "dispatch" && <DispatchSimulator />}
 
             {activeTab === "config" && <ConfigManager />}
+
+            {activeTab === "docs" && <ApiDocs />}
           </>
         )}
       </main>
@@ -130,11 +133,7 @@ export default function DashboardPage() {
           <div>
             CarNAQ Revenue Simulation Engine • Standalone Stateless Microservice
           </div>
-          <div className="flex items-center space-x-3">
-            <span>Deterministic PRNG: FNV-1a + Mulberry32</span>
-            <span>•</span>
-            <span>Vercel Node.js Serverless</span>
-          </div>
+          
         </div>
       </footer>
 
